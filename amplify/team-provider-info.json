@@ -1,0 +1,26 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-sparkdashboard-dev-95314-authRole",
+      "UnauthRoleArn": "arn:aws:iam::994028516214:role/amplify-sparkdashboard-dev-95314-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::994028516214:role/amplify-sparkdashboard-dev-95314-authRole",
+      "Region": "ap-southeast-2",
+      "DeploymentBucketName": "amplify-sparkdashboard-dev-95314-deployment",
+      "UnauthRoleName": "amplify-sparkdashboard-dev-95314-unauthRole",
+      "StackName": "amplify-sparkdashboard-dev-95314",
+      "StackId": "arn:aws:cloudformation:ap-southeast-2:994028516214:stack/amplify-sparkdashboard-dev-95314/4a56d9b0-ba18-11ec-b7ae-0a1462f9996a",
+      "AmplifyAppId": "d2xn2nkauv1wi1"
+    },
+    "categories": {
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d2xn2nkauv1wi1",
+          "type": "cicd"
+        }
+      },
+      "auth": {
+        "sparkdashboarde9910f43": {}
+      }
+    }
+  }
+}

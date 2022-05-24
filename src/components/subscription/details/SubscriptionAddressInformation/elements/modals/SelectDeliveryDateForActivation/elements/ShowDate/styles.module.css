@@ -1,0 +1,55 @@
+.container {
+  background: #fff8f2;
+  /* Kisaan Light Brown */
+  height: 4rem;
+  min-width: 7rem;
+
+  border: 1px solid #b7774c;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 10px 11px;
+  color: #672900;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.selectedContainer {
+  background: var(--gossamer-500);
+  color: #ffffff;
+  border: 1px solid #fff;
+
+  /* filter: drop-shadow(0px 4px 4px #cae0ae); */
+}
+.dateStringContainer {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 17px;
+  line-height: 21px;
+  /* identical to box height */
+
+  text-align: center;
+  letter-spacing: -0.015em;
+
+  /* Kisaan Dark Brown */
+}
+
+.limited {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 9px;
+  /* identical to box height */
+
+  text-align: center;
+  letter-spacing: -0.015em;
+  margin-top: 5px;
+
+  /* Kisaan Dark Brown */
+}
+
+.marginLeft {
+  margin-left: 77rem;
+}

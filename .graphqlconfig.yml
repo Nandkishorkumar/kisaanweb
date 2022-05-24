@@ -1,0 +1,18 @@
+projects:
+  kisaanServerlessTestApi:
+    schemaPath: src/graphql/schema.json
+    includes:
+      - src/graphql/**/*.ts
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: typescript
+        generatedFileName: src/API.ts
+        docsFilePath: src/graphql
+        region: ap-southeast-2
+        apiId: k7ghfpvl6rhtnljtquwjbld4v4
+        maxDepth: 6
+extensions:
+  amplify:
+    version: 3

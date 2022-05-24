@@ -1,0 +1,50 @@
+const config = {
+    "aws_project_region": "ap-southeast-2",
+    "aws_appsync_graphqlEndpoint": "https://23owltc4wvejzk4ob2kvjawtpe.appsync-api.ap-southeast-2.amazonaws.com/graphql",
+    "aws_appsync_region": "ap-southeast-2",
+    "aws_appsync_authenticationType": "AMAZON_COGNITO_USER_POOLS",
+    "aws_appsync_apiKey": "da2-a6e4ublnpvb47brun2n67fkqfy",
+ "aws_cognito_identity_pool_id": "ap-southeast-2:902d0de4-7b1e-4f02-af0d-84e7343c1f99",
+    "aws_cognito_region": "ap-southeast-2",
+    "aws_user_pools_id": "ap-southeast-2_qTqOKB4pC",
+    "aws_user_pools_web_client_id": "4lh67o6aisdkn4175qgg7cg5r1",
+    "oauth": {
+        "domain": "kisaanecommercefront90db1d05-90db1d05-dev.auth.ap-southeast-2.amazoncognito.com",
+        "scope": [
+            "phone",
+            "email",
+ "openid",
+            "profile",
+            "aws.cognito.signin.user.admin"
+        ],
+        "redirectSignIn": "https://main.d2xygxlwsnvpc.amplifyapp.com/",
+        "redirectSignOut": "https://main.d2xygxlwsnvpc.amplifyapp.com/",
+        "responseType": "code"
+    },
+    "federationTarget": "COGNITO_USER_POOLS",
+  "aws_cognito_username_attributes": [
+        "EMAIL"
+    ],
+    "aws_cognito_social_providers": [
+        "GOOGLE"
+    ],
+    "aws_cognito_signup_attributes": [
+        "EMAIL"
+    ],
+   "aws_cognito_mfa_configuration": "OFF",
+    "aws_cognito_mfa_types": [
+        "SMS"
+    ],
+    "aws_cognito_password_protection_settings": {
+        "passwordPolicyMinLength": 8,
+        "passwordPolicyCharacters": []
+    },
+    "aws_cognito_verification_mechanisms": [
+        "EMAIL"
+    ],
+    "aws_user_files_s3_bucket": "kisaanecommercefrontcfd212d99e204b52ac4c4d3ddf0153558-dev",
+    "aws_user_files_s3_bucket_region": "ap-southeast-2"
+};
+
+
+export default config;

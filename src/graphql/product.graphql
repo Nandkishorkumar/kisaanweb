@@ -1,0 +1,3904 @@
+
+  query ProductControlsByGSI1($PK: String!, $first: Int, $after: String) {
+    ProductControlsByGSI1(PK: $PK, first: $first, after: $after) {
+      items {
+        PK
+        SK
+        best_selling_flag
+        featured_flag
+      }
+      nextToken
+    }
+  }
+
+  query GetMenu($input: getMenuInput!, $limit: Int, $nextToken: String) {
+    getMenu(input: $input, limit: $limit, nextToken: $nextToken) {
+      nextToken
+      menus {
+        menu_id
+        category_name
+        category_title
+        category_id
+        position
+        sub_categories {
+          sub_category_name
+          sub_category_id
+          sub_category_title
+          position
+        }
+      }
+    }
+  }
+
+  query ListBanners(
+    $input: listBannersInput!
+    $limit: Int
+    $nextToken: String
+  ) {
+    listBanners(input: $input, limit: $limit, nextToken: $nextToken) {
+      banners {
+        mobile_banner_url
+        web_banner_url
+        banner_id
+        priority
+      }
+      nextToken
+    }
+  }
+
+  query GetUserProfile($input: getAndDeleteProfileInput!) {
+    getUserProfile(input: $input) {
+      PK
+      SK
+      user_id
+      uuid
+      email
+      email_verified_flag
+      user_avtar_url
+      full_name
+      user_role
+      user_type
+      primary_phone
+      secondary_phone
+      square_customer_id
+      register_at
+      last_login_at
+      google_details
+      google_registration_flag
+      facebook_details
+      facebook_registration_flag
+      user_agent_details
+      created_by
+      created_at
+      modified_by
+      modified_at
+    }
+  }
+
+  query GetAllUserProfile($input: getAllProfileInput!) {
+    getAllUserProfile(input: $input) {
+      profiles {
+        PK
+        SK
+        user_id
+        uuid
+        email
+        email_verified_flag
+        user_avtar_url
+        full_name
+        user_role
+        user_type
+        primary_phone
+        secondary_phone
+        square_customer_id
+        register_at
+        last_login_at
+        google_details
+        google_registration_flag
+        facebook_details
+        facebook_registration_flag
+        user_agent_details
+        created_by
+        created_at
+        modified_by
+        modified_at
+      }
+      nextToken
+    }
+  }
+
+  query GetUserProfileAddress($input: getAndDeleteUserAddressInput) {
+    getUserProfileAddress(input: $input) {
+      address_id
+      cluster_id
+      type
+      billing_name
+      shipping_name
+      address_hash
+      lat
+      lng
+      default_flag
+      billing_same_as_shipping_flag
+      delivery_instructions
+      shipping_email
+      shipping_primary_phone
+      shipping_secondary_phone
+      shipping_address_line_1
+      shipping_city
+      shipping_postcode
+      shipping_state
+      shipping_country
+      billing_email
+      billing_primary_phone
+      billing_secondary_phone
+      billing_address_line_1
+      billing_address_line_2
+      billing_city
+      billing_postcode
+      billing_state
+      billing_country
+    }
+  }
+
+  query ListAllAddresses(
+    $input: listAllAddressesInput!
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAllAddresses(input: $input, limit: $limit, nextToken: $nextToken) {
+      addresses {
+        address_id
+        cluster_id
+        type
+        billing_name
+        shipping_name
+        address_hash
+        lat
+        lng
+        default_flag
+        billing_same_as_shipping_flag
+        delivery_instructions
+        shipping_email
+        shipping_primary_phone
+        shipping_secondary_phone
+        shipping_address_line_1
+        shipping_city
+        shipping_postcode
+        shipping_state
+        shipping_country
+        billing_email
+        billing_primary_phone
+        billing_secondary_phone
+        billing_address_line_1
+        billing_address_line_2
+        billing_city
+        billing_postcode
+        billing_state
+        billing_country
+      }
+      nextToken
+    }
+  }
+
+  query ListAllShippingAddresses(
+    $input: listAllAddressesInput!
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAllShippingAddresses(
+      input: $input
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      addresses {
+        address_id
+        cluster_id
+        type
+        billing_name
+        shipping_name
+        address_hash
+        lat
+        lng
+        default_flag
+        billing_same_as_shipping_flag
+        delivery_instructions
+        shipping_email
+        shipping_primary_phone
+        shipping_secondary_phone
+        shipping_address_line_1
+        shipping_city
+        shipping_postcode
+        shipping_state
+        shipping_country
+        billing_email
+        billing_primary_phone
+        billing_secondary_phone
+        billing_address_line_1
+        billing_address_line_2
+        billing_city
+        billing_postcode
+        billing_state
+        billing_country
+      }
+      nextToken
+    }
+  }
+
+  query GetDefaultAddress($input: listAllAddressesInput!) {
+    getDefaultAddress(input: $input) {
+      addresses {
+        address_id
+        cluster_id
+        type
+        billing_name
+        shipping_name
+        address_hash
+        lat
+        lng
+        default_flag
+        billing_same_as_shipping_flag
+        delivery_instructions
+        shipping_email
+        shipping_primary_phone
+        shipping_secondary_phone
+        shipping_address_line_1
+        shipping_city
+        shipping_postcode
+        shipping_state
+        shipping_country
+        billing_email
+        billing_primary_phone
+        billing_secondary_phone
+        billing_address_line_1
+        billing_address_line_2
+        billing_city
+        billing_postcode
+        billing_state
+        billing_country
+      }
+      nextToken
+    }
+  }
+
+  query GetLastCheckAvailabilityAddress(
+    $input: getLastCheckAvailabilityAddressInput!
+  ) {
+    getLastCheckAvailabilityAddress(input: $input) {
+      cluster_id
+      shipping_name
+      lat
+      lng
+      shipping_email
+      shipping_primary_phone
+      shipping_secondary_phone
+      shipping_address_line_1
+      shipping_city
+      shipping_postcode
+      shipping_state
+      shipping_country
+      message
+      status
+      status_code
+    }
+  }
+
+  query CheckAddressAvailability($input: checkAddressAvailabilityInput!) {
+    checkAddressAvailability(input: $input) {
+      postcode
+      cluster_id
+      status
+      status_code
+    }
+  }
+
+  query GetDeliveryDateByCluster($input: getDeliveryDateByClusterInput!) {
+    getDeliveryDateByCluster(input: $input) {
+      cluster_id
+      shipping_postcode
+      available_delivery_date
+    }
+  }
+
+  query AlternativeAddressSearch($input: alternativeAddressSearchInput) {
+    alternativeAddressSearch(input: $input) {
+      lat
+      lng
+      address_line_1
+      city
+      state
+      postcode
+      country
+      full_address
+      address_provider
+    }
+  }
+
+  query ListAllPaymentMethods($input: listAllPaymentMethodsInput!) {
+    listAllPaymentMethods(input: $input) {
+      paymentMethods {
+        payment_method_id
+        status
+        default_flag
+        backup_flag
+        payment_method_type
+        card_brand
+        last_4
+        exp_month
+        exp_year
+        cardholder_name
+        billing_address_line_1
+        billing_address_line_2
+        billing_city
+        billing_country
+        billing_email
+        billing_postcode
+        billing_primary_phone
+        billing_secondary_phone
+        billing_state
+      }
+      nextToken
+    }
+  }
+
+  query GetDefaultPaymentMethod($input: listAllPaymentMethodsInput!) {
+    getDefaultPaymentMethod(input: $input) {
+      paymentMethods {
+        payment_method_id
+        status
+        default_flag
+        backup_flag
+        payment_method_type
+        card_brand
+        last_4
+        exp_month
+        exp_year
+        cardholder_name
+        billing_address_line_1
+        billing_address_line_2
+        billing_city
+        billing_country
+        billing_email
+        billing_postcode
+        billing_primary_phone
+        billing_secondary_phone
+        billing_state
+      }
+      nextToken
+    }
+  }
+
+  query GetPaymentLogoUrls($input: paymentLogoUrlInput) {
+    getPaymentLogoUrls(input: $input) {
+      PK
+      SK
+      visa
+      mastercard
+      american_express
+      paypal
+    }
+  }
+
+  query GetCart($input: getCartInput!) {
+    getCart(input: $input) {
+      status
+      status_code
+      subscription_frequency_list
+      contain_subscription_flag
+      contain_out_of_stock_product
+      product_count
+      cart_items {
+        product_id
+        subscription_flag
+        item_count
+        subscription_frequency
+        subscription_frequency_title
+        product_name
+        product_title
+        inventory_policy
+        availability_range
+        available_on_subscription_flag
+        subscription_frequency_details {
+          position
+          frequency_title
+          frequency_name
+        }
+        stock_flag
+        weight
+        homepage_media {
+          media_type
+          media_url
+          media_width
+          media_height
+        }
+        on_sale_flag
+        on_sale_to
+        on_sale_from
+        on_sale_maximum_quantity
+        amount_saved
+        percentage_off
+        sale_price
+        base_price
+        price_unit
+        price_per_unit
+      }
+      pricing_details {
+        onetime_amount
+        total_amount
+        discount
+        payable_amount
+        onetime_delivery_charge
+        recurring_delivery_charges {
+          subscription_frequency
+          recurring_amount
+          delivery_charge
+          recurring_total_amount
+        }
+      }
+    }
+  }
+
+  query ListOrderItems(
+    $input: listOrderItemsInput!
+    $limit: Int
+    $nextToken: String
+  ) {
+    listOrderItems(input: $input, limit: $limit, nextToken: $nextToken) {
+      orderItems {
+        corner_image_url
+        on_sale_flag
+        email_media {
+          media_type
+          media_url
+          media_width
+          media_height
+        }
+        on_sale_from
+        invoice_media {
+          media_type
+          media_url
+          media_width
+          media_height
+        }
+        item_count
+        percentage_off
+        product_id
+        vendor
+        weight
+        origin_country
+        price_unit
+        ship_from
+        subscription_frequency
+        subscription_flag
+        subscription_frequency_details {
+          position
+          frequency_title
+          frequency_name
+        }
+        on_sale_to
+        on_sale_maximum_quantity
+        price_per_unit
+        product_title
+        availability_range
+        amount_saved
+        product_name
+        stock_flag
+        available_on_subscription_flag
+        sale_price
+        inventory_policy
+        base_price
+        categories
+        product_type
+        homepage_media {
+          media_type
+          media_url
+          media_width
+          media_height
+        }
+        sub_categories
+      }
+      nextToken
+    }
+  }
+
+  query ListOrderTransactions($input: listOrderItemsInput!) {
+    listOrderTransactions(input: $input) {
+      transactions {
+        transaction_id
+        transaction_status
+        payment_amount
+        failed_reason
+        order_id
+        payment_id
+        created_at
+        payment_method_details {
+          payment_method_type
+          exp_month
+          exp_year
+          last_4
+          billing_state
+          billing_email
+          card_brand
+          billing_address_line_1
+          default_flag
+          billing_primary_phone
+          billing_country
+          cardholder_name
+          billing_city
+          payment_method_id
+          billing_postcode
+          backup_flag
+          status
+        }
+      }
+      nextToken
+    }
+  }
+
+  query GetOrderPaymentMethod($input: listOrderItemsInput!) {
+    getOrderPaymentMethod(input: $input) {
+      paymentMethods {
+        payment_method_id
+        status
+        default_flag
+        backup_flag
+        payment_method_type
+        card_brand
+        last_4
+        exp_month
+        exp_year
+        cardholder_name
+        billing_address_line_1
+        billing_address_line_2
+        billing_city
+        billing_country
+        billing_email
+        billing_postcode
+        billing_primary_phone
+        billing_secondary_phone
+        billing_state
+      }
+      nextToken
+    }
+  }
+
+  query GetOrder($input: getAndDeleteOrderInput!) {
+    getOrder(input: $input) {
+      invoice_download_flag
+      cancelled_at
+      child_subscription_ids
+      subscription_frequency_list
+      product_count
+      shipping_address {
+        shipping_primary_phone
+        shipping_secondary_phone
+        shipping_state
+        shipping_city
+        cluster_id
+        shipping_name
+        default_flag
+        shipping_postcode
+        lat
+        lng
+        delivery_instructions
+        shipping_address_line_1
+        address_id
+        shipping_email
+        shipping_country
+      }
+      backup_payment_method_flag
+      delivery_status
+      deliver_by
+      order_status
+      created_via
+      contains_subscription_flag
+      created_at
+      deliver_at
+      delivery_date
+      user_id
+      order_date
+      delivery_information_email_sent_flag
+      pricing_details {
+        onetime_amount
+        total_amount
+        discount
+        payable_amount
+        onetime_delivery_charge
+        recurring_delivery_charges {
+          subscription_frequency
+          recurring_amount
+          delivery_charge
+          recurring_total_amount
+        }
+      }
+      delivery_time_window
+      snapshot_data {
+        homepage_media {
+          media_type
+          media_url
+          media_width
+          media_height
+        }
+        product_id
+        product_name
+        product_title
+        card_brand
+        last_4
+        exp_month
+        exp_year
+        payment_method_type
+        payment_method_id
+        backup_flag
+      }
+      order_id
+      cancelled_reason
+    }
+  }
+
+  query ListAllOrders(
+    $input: listAllOrdersInput!
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAllOrders(input: $input, limit: $limit, nextToken: $nextToken) {
+      orders {
+        invoice_download_flag
+        cancelled_at
+        child_subscription_ids
+        subscription_frequency_list
+        product_count
+        shipping_address {
+          shipping_primary_phone
+          shipping_secondary_phone
+          shipping_state
+          shipping_city
+          cluster_id
+          shipping_name
+          default_flag
+          shipping_postcode
+          lat
+          lng
+          delivery_instructions
+          shipping_address_line_1
+          address_id
+          shipping_email
+          shipping_country
+        }
+        backup_payment_method_flag
+        delivery_status
+        deliver_by
+        order_status
+        created_via
+        contains_subscription_flag
+        created_at
+        deliver_at
+        delivery_date
+        user_id
+        order_date
+        delivery_information_email_sent_flag
+        pricing_details {
+          onetime_amount
+          total_amount
+          discount
+          payable_amount
+          onetime_delivery_charge
+          recurring_delivery_charges {
+            subscription_frequency
+            recurring_amount
+            delivery_charge
+            recurring_total_amount
+          }
+        }
+        delivery_time_window
+        snapshot_data {
+          homepage_media {
+            media_type
+            media_url
+            media_width
+            media_height
+          }
+          product_id
+          product_name
+          product_title
+          card_brand
+          last_4
+          exp_month
+          exp_year
+          payment_method_type
+          payment_method_id
+          backup_flag
+        }
+        order_id
+        cancelled_reason
+      }
+      nextToken
+    }
+  }
+
+  query ListAllOrdersAdmin(
+    $limit: Int
+    $forward_flag: forward_flag_enum
+    $nextToken: String
+  ) {
+    listAllOrdersAdmin(
+      limit: $limit
+      forward_flag: $forward_flag
+      nextToken: $nextToken
+    ) {
+      orders {
+        invoice_download_flag
+        cancelled_at
+        child_subscription_ids
+        subscription_frequency_list
+        product_count
+        shipping_address {
+          shipping_primary_phone
+          shipping_secondary_phone
+          shipping_state
+          shipping_city
+          cluster_id
+          shipping_name
+          default_flag
+          shipping_postcode
+          lat
+          lng
+          delivery_instructions
+          shipping_address_line_1
+          address_id
+          shipping_email
+          shipping_country
+        }
+        backup_payment_method_flag
+        delivery_status
+        deliver_by
+        order_status
+        created_via
+        contains_subscription_flag
+        created_at
+        deliver_at
+        delivery_date
+        user_id
+        order_date
+        delivery_information_email_sent_flag
+        pricing_details {
+          onetime_amount
+          total_amount
+          discount
+          payable_amount
+          onetime_delivery_charge
+          recurring_delivery_charges {
+            subscription_frequency
+            recurring_amount
+            delivery_charge
+            recurring_total_amount
+          }
+        }
+        delivery_time_window
+        snapshot_data {
+          homepage_media {
+            media_type
+            media_url
+            media_width
+            media_height
+          }
+          product_id
+          product_name
+          product_title
+          card_brand
+          last_4
+          exp_month
+          exp_year
+          payment_method_type
+          payment_method_id
+          backup_flag
+        }
+        order_id
+        cancelled_reason
+      }
+      nextToken
+    }
+  }
+
+  query ListAllOrderByStatusAdmin(
+    $input: listAllOrderByStatusAdminInput!
+    $limit: Int
+    $forward_flag: forward_flag_enum
+    $nextToken: String
+  ) {
+    listAllOrderByStatusAdmin(
+      input: $input
+      limit: $limit
+      forward_flag: $forward_flag
+      nextToken: $nextToken
+    ) {
+      orders {
+        invoice_download_flag
+        cancelled_at
+        child_subscription_ids
+        subscription_frequency_list
+        product_count
+        shipping_address {
+          shipping_primary_phone
+          shipping_secondary_phone
+          shipping_state
+          shipping_city
+          cluster_id
+          shipping_name
+          default_flag
+          shipping_postcode
+          lat
+          lng
+          delivery_instructions
+          shipping_address_line_1
+          address_id
+          shipping_email
+          shipping_country
+        }
+        backup_payment_method_flag
+        delivery_status
+        deliver_by
+        order_status
+        created_via
+        contains_subscription_flag
+        created_at
+        deliver_at
+        delivery_date
+        user_id
+        order_date
+        delivery_information_email_sent_flag
+        pricing_details {
+          onetime_amount
+          total_amount
+          discount
+          payable_amount
+          onetime_delivery_charge
+          recurring_delivery_charges {
+            subscription_frequency
+            recurring_amount
+            delivery_charge
+            recurring_total_amount
+          }
+        }
+        delivery_time_window
+        snapshot_data {
+          homepage_media {
+            media_type
+            media_url
+            media_width
+            media_height
+          }
+          product_id
+          product_name
+          product_title
+          card_brand
+          last_4
+          exp_month
+          exp_year
+          payment_method_type
+          payment_method_id
+          backup_flag
+        }
+        order_id
+        cancelled_reason
+      }
+      nextToken
+    }
+  }
+
+  query ListOrderByStatus(
+    $input: listOrderByStatusInput!
+    $limit: Int
+    $nextToken: String
+  ) {
+    listOrderByStatus(input: $input, limit: $limit, nextToken: $nextToken) {
+      orders {
+        invoice_download_flag
+        cancelled_at
+        child_subscription_ids
+        subscription_frequency_list
+        product_count
+        shipping_address {
+          shipping_primary_phone
+          shipping_secondary_phone
+          shipping_state
+          shipping_city
+          cluster_id
+          shipping_name
+          default_flag
+          shipping_postcode
+          lat
+          lng
+          delivery_instructions
+          shipping_address_line_1
+          address_id
+          shipping_email
+          shipping_country
+        }
+        backup_payment_method_flag
+        delivery_status
+        deliver_by
+        order_status
+        created_via
+        contains_subscription_flag
+        created_at
+        deliver_at
+        delivery_date
+        user_id
+        order_date
+        delivery_information_email_sent_flag
+        pricing_details {
+          onetime_amount
+          total_amount
+          discount
+          payable_amount
+          onetime_delivery_charge
+          recurring_delivery_charges {
+            subscription_frequency
+            recurring_amount
+            delivery_charge
+            recurring_total_amount
+          }
+        }
+        delivery_time_window
+        snapshot_data {
+          homepage_media {
+            media_type
+            media_url
+            media_width
+            media_height
+          }
+          product_id
+          product_name
+          product_title
+          card_brand
+          last_4
+          exp_month
+          exp_year
+          payment_method_type
+          payment_method_id
+          backup_flag
+        }
+        order_id
+        cancelled_reason
+      }
+      nextToken
+    }
+  }
+
+  query ListAllRelatedUserOrder(
+    $input: getRelatedUserOrderInput!
+    $limit: Int
+    $nextToken: String
+    $forward_flag: String
+  ) {
+    listAllRelatedUserOrder(
+      input: $input
+      limit: $limit
+      nextToken: $nextToken
+      forward_flag: $forward_flag
+    ) {
+      orders {
+        invoice_download_flag
+        cancelled_at
+        child_subscription_ids
+        subscription_frequency_list
+        product_count
+        shipping_address {
+          shipping_primary_phone
+          shipping_secondary_phone
+          shipping_state
+          shipping_city
+          cluster_id
+          shipping_name
+          default_flag
+          shipping_postcode
+          lat
+          lng
+          delivery_instructions
+          shipping_address_line_1
+          address_id
+          shipping_email
+          shipping_country
+        }
+        backup_payment_method_flag
+        delivery_status
+        deliver_by
+        order_status
+        created_via
+        contains_subscription_flag
+        created_at
+        deliver_at
+        delivery_date
+        user_id
+        order_date
+        delivery_information_email_sent_flag
+        pricing_details {
+          onetime_amount
+          total_amount
+          discount
+          payable_amount
+          onetime_delivery_charge
+          recurring_delivery_charges {
+            subscription_frequency
+            recurring_amount
+            delivery_charge
+            recurring_total_amount
+          }
+        }
+        delivery_time_window
+        snapshot_data {
+          homepage_media {
+            media_type
+            media_url
+            media_width
+            media_height
+          }
+          product_id
+          product_name
+          product_title
+          card_brand
+          last_4
+          exp_month
+          exp_year
+          payment_method_type
+          payment_method_id
+          backup_flag
+        }
+        order_id
+        cancelled_reason
+      }
+      nextToken
+    }
+  }
+
+  query ListAllRelatedOrdersFromSubscription(
+    $input: getRelatedOrdersFromSubscriptionInput!
+    $limit: Int
+    $nextToken: String
+    $forward_flag: String
+  ) {
+    listAllRelatedOrdersFromSubscription(
+      input: $input
+      limit: $limit
+      nextToken: $nextToken
+      forward_flag: $forward_flag
+    ) {
+      orders {
+        invoice_download_flag
+        cancelled_at
+        child_subscription_ids
+        subscription_frequency_list
+        product_count
+        shipping_address {
+          shipping_primary_phone
+          shipping_secondary_phone
+          shipping_state
+          shipping_city
+          cluster_id
+          shipping_name
+          default_flag
+          shipping_postcode
+          lat
+          lng
+          delivery_instructions
+          shipping_address_line_1
+          address_id
+          shipping_email
+          shipping_country
+        }
+        backup_payment_method_flag
+        delivery_status
+        deliver_by
+        order_status
+        created_via
+        contains_subscription_flag
+        created_at
+        deliver_at
+        delivery_date
+        user_id
+        order_date
+        delivery_information_email_sent_flag
+        pricing_details {
+          onetime_amount
+          total_amount
+          discount
+          payable_amount
+          onetime_delivery_charge
+          recurring_delivery_charges {
+            subscription_frequency
+            recurring_amount
+            delivery_charge
+            recurring_total_amount
+          }
+        }
+        delivery_time_window
+        snapshot_data {
+          homepage_media {
+            media_type
+            media_url
+            media_width
+            media_height
+          }
+          product_id
+          product_name
+          product_title
+          card_brand
+          last_4
+          exp_month
+          exp_year
+          payment_method_type
+          payment_method_id
+          backup_flag
+        }
+        order_id
+        cancelled_reason
+      }
+      nextToken
+    }
+  }
+
+  query GetAvailableDeliveryDateInCart(
+    $input: getAvailableDeliveryDateInCartInput!
+  ) {
+    getAvailableDeliveryDateInCart(input: $input) {
+      available_delivery_date
+      remove_product_for_more_delivery_date {
+        PK
+        SK
+        inventory_policy
+      }
+      out_of_stock_product {
+        PK
+        SK
+        date
+        current_stock
+        stock_unit
+        product_type
+      }
+    }
+  }
+
+  query GetAvailableDeliveryDateInOrder(
+    $input: getAvailableDeliveryDateInOrderInput!
+  ) {
+    getAvailableDeliveryDateInOrder(input: $input) {
+      available_delivery_date
+      remove_product_for_more_delivery_date {
+        PK
+        SK
+        inventory_policy
+      }
+      out_of_stock_product {
+        PK
+        SK
+        date
+        current_stock
+        stock_unit
+        product_type
+      }
+    }
+  }
+
+  query ListAllSubscriptions(
+    $input: listAllSubscriptionsInput!
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAllSubscriptions(input: $input, limit: $limit, nextToken: $nextToken) {
+      subscriptions {
+        created_at
+        subscription_id
+        internal_subscription_id
+        product_count
+        next_delivery_date
+        subscription_frequency
+        subscription_status
+        next_payment_date
+        type
+        pricing_details {
+          onetime_amount
+          total_amount
+          discount
+          payable_amount
+          onetime_delivery_charge
+          recurring_delivery_charges {
+            subscription_frequency
+            recurring_amount
+            delivery_charge
+            recurring_total_amount
+          }
+        }
+        shipping_address {
+          shipping_primary_phone
+          shipping_secondary_phone
+          shipping_state
+          shipping_city
+          cluster_id
+          shipping_name
+          default_flag
+          shipping_postcode
+          lat
+          lng
+          delivery_instructions
+          shipping_address_line_1
+          address_id
+          shipping_email
+          shipping_country
+        }
+        snapshot_data {
+          homepage_media {
+            media_type
+            media_url
+            media_width
+            media_height
+          }
+          product_id
+          product_name
+          product_title
+          card_brand
+          last_4
+          exp_month
+          exp_year
+          payment_method_type
+          payment_method_id
+          backup_flag
+        }
+      }
+      nextToken
+    }
+  }
+
+  query ListAllSubscriptionsAdmin(
+    $forward_flag: forward_flag_enum
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAllSubscriptionsAdmin(
+      forward_flag: $forward_flag
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      subscriptions {
+        created_at
+        subscription_id
+        internal_subscription_id
+        product_count
+        next_delivery_date
+        subscription_frequency
+        subscription_status
+        next_payment_date
+        type
+        pricing_details {
+          onetime_amount
+          total_amount
+          discount
+          payable_amount
+          onetime_delivery_charge
+          recurring_delivery_charges {
+            subscription_frequency
+            recurring_amount
+            delivery_charge
+            recurring_total_amount
+          }
+        }
+        shipping_address {
+          shipping_primary_phone
+          shipping_secondary_phone
+          shipping_state
+          shipping_city
+          cluster_id
+          shipping_name
+          default_flag
+          shipping_postcode
+          lat
+          lng
+          delivery_instructions
+          shipping_address_line_1
+          address_id
+          shipping_email
+          shipping_country
+        }
+        snapshot_data {
+          homepage_media {
+            media_type
+            media_url
+            media_width
+            media_height
+          }
+          product_id
+          product_name
+          product_title
+          card_brand
+          last_4
+          exp_month
+          exp_year
+          payment_method_type
+          payment_method_id
+          backup_flag
+        }
+      }
+      nextToken
+    }
+  }
+
+  query ListAllSubscriptionByStatusAdmin(
+    $input: listAllSubscriptionByStatusAdminInput!
+    $forward_flag: forward_flag_enum
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAllSubscriptionByStatusAdmin(
+      input: $input
+      forward_flag: $forward_flag
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      subscriptions {
+        created_at
+        subscription_id
+        internal_subscription_id
+        product_count
+        next_delivery_date
+        subscription_frequency
+        subscription_status
+        next_payment_date
+        type
+        pricing_details {
+          onetime_amount
+          total_amount
+          discount
+          payable_amount
+          onetime_delivery_charge
+          recurring_delivery_charges {
+            subscription_frequency
+            recurring_amount
+            delivery_charge
+            recurring_total_amount
+          }
+        }
+        shipping_address {
+          shipping_primary_phone
+          shipping_secondary_phone
+          shipping_state
+          shipping_city
+          cluster_id
+          shipping_name
+          default_flag
+          shipping_postcode
+          lat
+          lng
+          delivery_instructions
+          shipping_address_line_1
+          address_id
+          shipping_email
+          shipping_country
+        }
+        snapshot_data {
+          homepage_media {
+            media_type
+            media_url
+            media_width
+            media_height
+          }
+          product_id
+          product_name
+          product_title
+          card_brand
+          last_4
+          exp_month
+          exp_year
+          payment_method_type
+          payment_method_id
+          backup_flag
+        }
+      }
+      nextToken
+    }
+  }
+
+  query ListSubscriptionByStatus(
+    $input: listSubscriptionByStatusInput!
+    $limit: Int
+    $nextToken: String
+  ) {
+    listSubscriptionByStatus(
+      input: $input
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      subscriptions {
+        created_at
+        subscription_id
+        internal_subscription_id
+        product_count
+        next_delivery_date
+        subscription_frequency
+        subscription_status
+        next_payment_date
+        type
+        pricing_details {
+          onetime_amount
+          total_amount
+          discount
+          payable_amount
+          onetime_delivery_charge
+          recurring_delivery_charges {
+            subscription_frequency
+            recurring_amount
+            delivery_charge
+            recurring_total_amount
+          }
+        }
+        shipping_address {
+          shipping_primary_phone
+          shipping_secondary_phone
+          shipping_state
+          shipping_city
+          cluster_id
+          shipping_name
+          default_flag
+          shipping_postcode
+          lat
+          lng
+          delivery_instructions
+          shipping_address_line_1
+          address_id
+          shipping_email
+          shipping_country
+        }
+        snapshot_data {
+          homepage_media {
+            media_type
+            media_url
+            media_width
+            media_height
+          }
+          product_id
+          product_name
+          product_title
+          card_brand
+          last_4
+          exp_month
+          exp_year
+          payment_method_type
+          payment_method_id
+          backup_flag
+        }
+      }
+      nextToken
+    }
+  }
+
+  query ListSubscriptionItems(
+    $input: listSubscriptionItemsInput!
+    $limit: Int
+    $nextToken: String
+  ) {
+    listSubscriptionItems(input: $input, limit: $limit, nextToken: $nextToken) {
+      nextToken
+      subscriptionItems {
+        corner_image_url
+        on_sale_flag
+        email_media {
+          media_type
+          media_url
+          media_width
+          media_height
+        }
+        on_sale_from
+        invoice_media {
+          media_type
+          media_url
+          media_width
+          media_height
+        }
+        item_count
+        percentage_off
+        product_id
+        vendor
+        weight
+        origin_country
+        price_unit
+        ship_from
+        subscription_frequency_details {
+          position
+          frequency_title
+          frequency_name
+        }
+        on_sale_to
+        on_sale_maximum_quantity
+        subscription_flag
+        price_per_unit
+        product_title
+        availability_range
+        amount_saved
+        product_name
+        stock_flag
+        available_on_subscription_flag
+        sale_price
+        inventory_policy
+        base_price
+        categories
+        product_type
+        homepage_media {
+          media_type
+          media_url
+          media_width
+          media_height
+        }
+        sub_categories
+      }
+    }
+  }
+
+  query GetSubscriptionPaymentMethod($input: listSubscriptionItemsInput!) {
+    getSubscriptionPaymentMethod(input: $input) {
+      paymentMethods {
+        payment_method_id
+        status
+        default_flag
+        backup_flag
+        payment_method_type
+        card_brand
+        last_4
+        exp_month
+        exp_year
+        cardholder_name
+        billing_address_line_1
+        billing_address_line_2
+        billing_city
+        billing_country
+        billing_email
+        billing_postcode
+        billing_primary_phone
+        billing_secondary_phone
+        billing_state
+      }
+      nextToken
+    }
+  }
+
+  query GetSubscription($input: getAndDeleteSubscriptionInput!) {
+    getSubscription(input: $input) {
+      created_at
+      subscription_id
+      internal_subscription_id
+      product_count
+      next_delivery_date
+      subscription_frequency
+      subscription_status
+      next_payment_date
+      type
+      pricing_details {
+        onetime_amount
+        total_amount
+        discount
+        payable_amount
+        onetime_delivery_charge
+        recurring_delivery_charges {
+          subscription_frequency
+          recurring_amount
+          delivery_charge
+          recurring_total_amount
+        }
+      }
+      shipping_address {
+        shipping_primary_phone
+        shipping_secondary_phone
+        shipping_state
+        shipping_city
+        cluster_id
+        shipping_name
+        default_flag
+        shipping_postcode
+        lat
+        lng
+        delivery_instructions
+        shipping_address_line_1
+        address_id
+        shipping_email
+        shipping_country
+      }
+      snapshot_data {
+        homepage_media {
+          media_type
+          media_url
+          media_width
+          media_height
+        }
+        product_id
+        product_name
+        product_title
+        card_brand
+        last_4
+        exp_month
+        exp_year
+        payment_method_type
+        payment_method_id
+        backup_flag
+      }
+    }
+  }
+
+  query GetTransaction($input: getAndDeleteTransactionInput!) {
+    getTransaction(input: $input) {
+      transaction_id
+      transaction_status
+      payment_amount
+      failed_reason
+      order_id
+      payment_id
+      created_at
+      payment_method_details {
+        payment_method_type
+        exp_month
+        exp_year
+        last_4
+        billing_state
+        billing_email
+        card_brand
+        billing_address_line_1
+        default_flag
+        billing_primary_phone
+        billing_country
+        cardholder_name
+        billing_city
+        payment_method_id
+        billing_postcode
+        backup_flag
+        status
+      }
+    }
+  }
+
+  query ListAllTransactions(
+    $input: listAllTransactionsInput!
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAllTransactions(input: $input, limit: $limit, nextToken: $nextToken) {
+      transactions {
+        transaction_id
+        transaction_status
+        payment_amount
+        failed_reason
+        order_id
+        payment_id
+        created_at
+        payment_method_details {
+          payment_method_type
+          exp_month
+          exp_year
+          last_4
+          billing_state
+          billing_email
+          card_brand
+          billing_address_line_1
+          default_flag
+          billing_primary_phone
+          billing_country
+          cardholder_name
+          billing_city
+          payment_method_id
+          billing_postcode
+          backup_flag
+          status
+        }
+      }
+      nextToken
+    }
+  }
+
+  query ListTransactionByStatus(
+    $input: listTransactionByStatusInput!
+    $limit: Int
+    $nextToken: String
+  ) {
+    listTransactionByStatus(
+      input: $input
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      transactions {
+        transaction_id
+        transaction_status
+        payment_amount
+        failed_reason
+        order_id
+        payment_id
+        created_at
+        payment_method_details {
+          payment_method_type
+          exp_month
+          exp_year
+          last_4
+          billing_state
+          billing_email
+          card_brand
+          billing_address_line_1
+          default_flag
+          billing_primary_phone
+          billing_country
+          cardholder_name
+          billing_city
+          payment_method_id
+          billing_postcode
+          backup_flag
+          status
+        }
+      }
+      nextToken
+    }
+  }
+
+  query GetProduct($input: getProductInput!, $limit: Int, $nextToken: String) {
+    getProduct(input: $input, limit: $limit, nextToken: $nextToken) {
+      products {
+        main_product_flag
+        product_id
+        product_type
+        categories
+        sub_categories
+        variations
+        best_selling_flag
+        featured_flag
+        product_name
+        published_scope
+        average_rating_stars
+        product_title
+        short_description
+        long_description
+        vendor
+        ship_from
+        available_on_subscription_flag
+        subscription_frequency_details {
+          position
+          frequency_title
+          frequency_name
+        }
+        rating_details {
+          total_rating_count
+          five_start_rating_count
+          three_star_rating_count
+          one_star_rating_count
+          two_star_rating_count
+          four_start_rating_count
+        }
+        media_details {
+          position
+          media_type
+          media_url
+          media_height
+          media_width
+        }
+        stock_flag
+        weight
+        homepage_media {
+          media_type
+          media_url
+          media_width
+          media_height
+        }
+        on_sale_flag
+        on_sale_to
+        on_sale_from
+        on_sale_maximum_quantity
+        amount_saved
+        percentage_off
+        sale_price
+        base_price
+        price_unit
+        price_per_unit
+        origin_country
+        corner_image_url
+        status
+      }
+      nextToken
+    }
+  }
+
+  query ListAllSubscriptionProducts($limit: Int, $nextToken: String) {
+    listAllSubscriptionProducts(limit: $limit, nextToken: $nextToken) {
+      products {
+        main_product_flag
+        product_id
+        product_type
+        categories
+        sub_categories
+        variations
+        best_selling_flag
+        featured_flag
+        product_name
+        published_scope
+        average_rating_stars
+        product_title
+        short_description
+        long_description
+        vendor
+        ship_from
+        available_on_subscription_flag
+        subscription_frequency_details {
+          position
+          frequency_title
+          frequency_name
+        }
+        rating_details {
+          total_rating_count
+          five_start_rating_count
+          three_star_rating_count
+          one_star_rating_count
+          two_star_rating_count
+          four_start_rating_count
+        }
+        media_details {
+          position
+          media_type
+          media_url
+          media_height
+          media_width
+        }
+        stock_flag
+        weight
+        homepage_media {
+          media_type
+          media_url
+          media_width
+          media_height
+        }
+        on_sale_flag
+        on_sale_to
+        on_sale_from
+        on_sale_maximum_quantity
+        amount_saved
+        percentage_off
+        sale_price
+        base_price
+        price_unit
+        price_per_unit
+        origin_country
+        corner_image_url
+        status
+      }
+      nextToken
+    }
+  }
+
+  query ListFeaturedProducts($limit: Int, $nextToken: String) {
+    listFeaturedProducts(limit: $limit, nextToken: $nextToken) {
+      products {
+        main_product_flag
+        product_id
+        product_type
+        categories
+        sub_categories
+        variations
+        best_selling_flag
+        featured_flag
+        product_name
+        published_scope
+        average_rating_stars
+        product_title
+        short_description
+        long_description
+        vendor
+        ship_from
+        available_on_subscription_flag
+        subscription_frequency_details {
+          position
+          frequency_title
+          frequency_name
+        }
+        rating_details {
+          total_rating_count
+          five_start_rating_count
+          three_star_rating_count
+          one_star_rating_count
+          two_star_rating_count
+          four_start_rating_count
+        }
+        media_details {
+          position
+          media_type
+          media_url
+          media_height
+          media_width
+        }
+        stock_flag
+        weight
+        homepage_media {
+          media_type
+          media_url
+          media_width
+          media_height
+        }
+        on_sale_flag
+        on_sale_to
+        on_sale_from
+        on_sale_maximum_quantity
+        amount_saved
+        percentage_off
+        sale_price
+        base_price
+        price_unit
+        price_per_unit
+        origin_country
+        corner_image_url
+        status
+      }
+      nextToken
+    }
+  }
+
+  query ListAllBuyAgainProducts(
+    $input: listAllBuyAgainProductsInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAllBuyAgainProducts(
+      input: $input
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      products {
+        main_product_flag
+        product_id
+        product_type
+        categories
+        sub_categories
+        variations
+        best_selling_flag
+        featured_flag
+        product_name
+        published_scope
+        average_rating_stars
+        product_title
+        short_description
+        long_description
+        vendor
+        ship_from
+        available_on_subscription_flag
+        subscription_frequency_details {
+          position
+          frequency_title
+          frequency_name
+        }
+        rating_details {
+          total_rating_count
+          five_start_rating_count
+          three_star_rating_count
+          one_star_rating_count
+          two_star_rating_count
+          four_start_rating_count
+        }
+        media_details {
+          position
+          media_type
+          media_url
+          media_height
+          media_width
+        }
+        stock_flag
+        weight
+        homepage_media {
+          media_type
+          media_url
+          media_width
+          media_height
+        }
+        on_sale_flag
+        on_sale_to
+        on_sale_from
+        on_sale_maximum_quantity
+        amount_saved
+        percentage_off
+        sale_price
+        base_price
+        price_unit
+        price_per_unit
+        origin_country
+        corner_image_url
+        status
+      }
+      nextToken
+    }
+  }
+
+  query ListAllProducts($limit: Int, $nextToken: String) {
+    listAllProducts(limit: $limit, nextToken: $nextToken) {
+      products {
+        main_product_flag
+        product_id
+        product_type
+        categories
+        sub_categories
+        variations
+        best_selling_flag
+        featured_flag
+        product_name
+        published_scope
+        average_rating_stars
+        product_title
+        short_description
+        long_description
+        vendor
+        ship_from
+        available_on_subscription_flag
+        subscription_frequency_details {
+          position
+          frequency_title
+          frequency_name
+        }
+        rating_details {
+          total_rating_count
+          five_start_rating_count
+          three_star_rating_count
+          one_star_rating_count
+          two_star_rating_count
+          four_start_rating_count
+        }
+        media_details {
+          position
+          media_type
+          media_url
+          media_height
+          media_width
+        }
+        stock_flag
+        weight
+        homepage_media {
+          media_type
+          media_url
+          media_width
+          media_height
+        }
+        on_sale_flag
+        on_sale_to
+        on_sale_from
+        on_sale_maximum_quantity
+        amount_saved
+        percentage_off
+        sale_price
+        base_price
+        price_unit
+        price_per_unit
+        origin_country
+        corner_image_url
+        status
+      }
+      nextToken
+    }
+  }
+
+  query ListAllCategoryProducts(
+    $input: listAllCategoryProductsInput
+    $limit: Int
+    $sortBy: sortByEnum
+    $ascendingFlag: String
+    $nextToken: String
+  ) {
+    listAllCategoryProducts(
+      input: $input
+      limit: $limit
+      sortBy: $sortBy
+      ascendingFlag: $ascendingFlag
+      nextToken: $nextToken
+    ) {
+      products {
+        main_product_flag
+        product_id
+        product_type
+        categories
+        sub_categories
+        variations
+        best_selling_flag
+        featured_flag
+        product_name
+        published_scope
+        average_rating_stars
+        product_title
+        short_description
+        long_description
+        vendor
+        ship_from
+        available_on_subscription_flag
+        subscription_frequency_details {
+          position
+          frequency_title
+          frequency_name
+        }
+        rating_details {
+          total_rating_count
+          five_start_rating_count
+          three_star_rating_count
+          one_star_rating_count
+          two_star_rating_count
+          four_start_rating_count
+        }
+        media_details {
+          position
+          media_type
+          media_url
+          media_height
+          media_width
+        }
+        stock_flag
+        weight
+        homepage_media {
+          media_type
+          media_url
+          media_width
+          media_height
+        }
+        on_sale_flag
+        on_sale_to
+        on_sale_from
+        on_sale_maximum_quantity
+        amount_saved
+        percentage_off
+        sale_price
+        base_price
+        price_unit
+        price_per_unit
+        origin_country
+        corner_image_url
+        status
+      }
+      nextToken
+    }
+  }
+
+  query ListAllSubCategoryProducts(
+    $input: listAllSubCategoryProductsInput
+    $limit: Int
+    $sortBy: sortByEnum
+    $ascendingFlag: String
+    $nextToken: String
+  ) {
+    listAllSubCategoryProducts(
+      input: $input
+      limit: $limit
+      sortBy: $sortBy
+      ascendingFlag: $ascendingFlag
+      nextToken: $nextToken
+    ) {
+      products {
+        main_product_flag
+        product_id
+        product_type
+        categories
+        sub_categories
+        variations
+        best_selling_flag
+        featured_flag
+        product_name
+        published_scope
+        average_rating_stars
+        product_title
+        short_description
+        long_description
+        vendor
+        ship_from
+        available_on_subscription_flag
+        subscription_frequency_details {
+          position
+          frequency_title
+          frequency_name
+        }
+        rating_details {
+          total_rating_count
+          five_start_rating_count
+          three_star_rating_count
+          one_star_rating_count
+          two_star_rating_count
+          four_start_rating_count
+        }
+        media_details {
+          position
+          media_type
+          media_url
+          media_height
+          media_width
+        }
+        stock_flag
+        weight
+        homepage_media {
+          media_type
+          media_url
+          media_width
+          media_height
+        }
+        on_sale_flag
+        on_sale_to
+        on_sale_from
+        on_sale_maximum_quantity
+        amount_saved
+        percentage_off
+        sale_price
+        base_price
+        price_unit
+        price_per_unit
+        origin_country
+        corner_image_url
+        status
+      }
+      nextToken
+    }
+  }
+
+  query GetCategory($input: getAndDeleteCategoryInput!) {
+    getCategory(input: $input) {
+      priority
+      category_id
+      category_name
+      category_title
+      description
+      media_url
+      media_type
+      media_height
+      media_width
+      shop_media {
+        media_height
+        text_color
+        background_color
+        media_width
+        media_url
+        media_type
+      }
+      status
+    }
+  }
+
+  query ListAllCategories($limit: Int, $nextToken: String) {
+    listAllCategories(limit: $limit, nextToken: $nextToken) {
+      categories {
+        priority
+        category_id
+        category_name
+        category_title
+        description
+        media_url
+        media_type
+        media_height
+        media_width
+        shop_media {
+          media_height
+          text_color
+          background_color
+          media_width
+          media_url
+          media_type
+        }
+        status
+      }
+      nextToken
+    }
+  }
+
+  query GetTestimonial($input: getAndDeleteTestimonialInput) {
+    getTestimonial(input: $input) {
+      rating_flag
+      rating_stars
+      testimonial_flag
+      user_avtar_url
+      position
+      full_name
+      testimonial_subject
+      testimonial_detail
+    }
+  }
+
+  query ListAllTestimonials($limit: Int, $nextToken: String) {
+    listAllTestimonials(limit: $limit, nextToken: $nextToken) {
+      testimonials {
+        rating_flag
+        rating_stars
+        testimonial_flag
+        user_avtar_url
+        position
+        full_name
+        testimonial_subject
+        testimonial_detail
+      }
+      nextToken
+    }
+  }
+
+  query ListFeaturedTestimonials($limit: Int, $nextToken: String) {
+    listFeaturedTestimonials(limit: $limit, nextToken: $nextToken) {
+      testimonials {
+        rating_flag
+        rating_stars
+        testimonial_flag
+        user_avtar_url
+        position
+        full_name
+        testimonial_subject
+        testimonial_detail
+      }
+      nextToken
+    }
+  }
+
+  query GetNewsLetterSubscription($input: getAndDeleteNewsLetterInput!) {
+    getNewsLetterSubscription(input: $input) {
+      news_letter_id
+      email
+      platform
+    }
+  }
+
+  query GetAllNewsLetterSubscriptions($input: getAllNewsLetterInput!) {
+    getAllNewsLetterSubscriptions(input: $input) {
+      newsLetters {
+        news_letter_id
+        email
+        platform
+      }
+      nextToken
+    }
+  }
+
+  query GetQna($input: getAndDeleteQnaInput!) {
+    getQna(input: $input) {
+      qna_id
+      product_id
+      question
+      answer
+      position
+      answer_by
+    }
+  }
+
+  query ListAllQnas(
+    $input: listAllQnasInput!
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAllQnas(input: $input, limit: $limit, nextToken: $nextToken) {
+      qnas {
+        qna_id
+        product_id
+        question
+        answer
+        position
+        answer_by
+      }
+      nextToken
+    }
+  }
+
+  query ListAllReviews(
+    $input: listAllReviewsInput!
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAllReviews(input: $input, limit: $limit, nextToken: $nextToken) {
+      reviews {
+        review_id
+        product_name
+        rating_flag
+        rating_stars
+        review_flag
+        user_id
+        user_avtar_url
+        full_name
+        review_subject
+        helpful_flag
+        helpful_count
+        review_detail
+      }
+      nextToken
+    }
+  }
+
+  query GetComment($input: getAndDeleteCommentInput!) {
+    getComment(input: $input) {
+      PK
+      SK
+      comment_id
+      email
+      qna_id
+      user_id
+      uuid
+      user_avtar_url
+      comment
+      commented_by
+      commented_at
+      status
+      position
+      modified_by
+      modified_at
+    }
+  }
+
+  query GetAllComments(
+    $input: getAllCommentInput!
+    $limit: Int
+    $nextToken: String
+  ) {
+    getAllComments(input: $input, limit: $limit, nextToken: $nextToken) {
+      comments {
+        PK
+        SK
+        comment_id
+        email
+        qna_id
+        user_id
+        uuid
+        user_avtar_url
+        comment
+        commented_by
+        commented_at
+        status
+        position
+        modified_by
+        modified_at
+      }
+      nextToken
+    }
+  }
+
+  query GetCluster($input: getAndDeleteClusterInput!) {
+    getCluster(input: $input) {
+      PK
+      SK
+      cluster_id
+      cluster_name
+      postcode
+      description
+      cities
+      coordinates_format_1
+      coordinates_format_2
+      delivery_charges
+      delivery_days
+      created_by
+      created_at
+      modified_by
+      modified_at
+      available_frequency
+    }
+  }
+
+  query GetAllClusters($input: getAllClusterInput!) {
+    getAllClusters(input: $input) {
+      clusters {
+        PK
+        SK
+        cluster_id
+        cluster_name
+        postcode
+        description
+        cities
+        coordinates_format_1
+        coordinates_format_2
+        delivery_charges
+        delivery_days
+        created_by
+        created_at
+        modified_by
+        modified_at
+        available_frequency
+      }
+      nextToken
+    }
+  }
+
+  query GetInventory($input: getAndDeleteInventoryInput!) {
+    getInventory(input: $input) {
+      PK
+      SK
+      product_type
+      inventory_id
+      product_id
+      variation_id
+      product_name
+      variation_name
+      variation_description
+      inventory_description
+      date
+      day
+      sku
+      total_stock
+      current_stock
+      purchased_stock
+      stock_unit
+      created_by
+      created_at
+      modified_by
+      modified_at
+    }
+  }
+
+  query GetAllInventories($input: getAndDeleteInventoryInput!) {
+    getAllInventories(input: $input) {
+      inventories {
+        PK
+        SK
+        product_type
+        inventory_id
+        product_id
+        variation_id
+        product_name
+        variation_name
+        variation_description
+        inventory_description
+        date
+        day
+        sku
+        total_stock
+        current_stock
+        purchased_stock
+        stock_unit
+        created_by
+        created_at
+        modified_by
+        modified_at
+      }
+    }
+  }
+
+
+  mutation FillContactForm($input: contactFormInput!) {
+    fillContactForm(input: $input) {
+      first_name
+      last_name
+      email
+      phone_number
+      message
+      subject
+      user_id
+      unauth_id
+      form_id
+    }
+  }
+
+  mutation CreateBug($input: bugInput) {
+    createBug(input: $input) {
+      user_id
+      page_url
+      screenshot_url
+      summary
+      description
+      developer
+    }
+  }
+
+  mutation CreateUserProfile($input: createAndUpdateProfileInput!) {
+    createUserProfile(input: $input) {
+      PK
+      SK
+      user_id
+      uuid
+      email
+      email_verified_flag
+      user_avtar_url
+      full_name
+      user_role
+      user_type
+      primary_phone
+      secondary_phone
+      square_customer_id
+      register_at
+      last_login_at
+      google_details
+      google_registration_flag
+      facebook_details
+      facebook_registration_flag
+      user_agent_details
+      created_by
+      created_at
+      modified_by
+      modified_at
+    }
+  }
+
+  mutation UpdateUserProfile($input: createAndUpdateProfileInput!) {
+    updateUserProfile(input: $input) {
+      PK
+      SK
+      user_id
+      uuid
+      email
+      email_verified_flag
+      user_avtar_url
+      full_name
+      user_role
+      user_type
+      primary_phone
+      secondary_phone
+      square_customer_id
+      register_at
+      last_login_at
+      google_details
+      google_registration_flag
+      facebook_details
+      facebook_registration_flag
+      user_agent_details
+      created_by
+      created_at
+      modified_by
+      modified_at
+    }
+  }
+
+  mutation DeleteUserProfile($input: getAndDeleteProfileInput!) {
+    deleteUserProfile(input: $input) {
+      PK
+      SK
+      user_id
+      uuid
+      email
+      email_verified_flag
+      user_avtar_url
+      full_name
+      user_role
+      user_type
+      primary_phone
+      secondary_phone
+      square_customer_id
+      register_at
+      last_login_at
+      google_details
+      google_registration_flag
+      facebook_details
+      facebook_registration_flag
+      user_agent_details
+      created_by
+      created_at
+      modified_by
+      modified_at
+    }
+  }
+
+  mutation AddAddress($input: addAndUpdateUserProfileAddressInput!) {
+    addAddress(input: $input) {
+      address_id
+      cluster_id
+      type
+      billing_name
+      shipping_name
+      address_hash
+      lat
+      lng
+      default_flag
+      billing_same_as_shipping_flag
+      delivery_instructions
+      shipping_email
+      shipping_primary_phone
+      shipping_secondary_phone
+      shipping_address_line_1
+      shipping_city
+      shipping_postcode
+      shipping_state
+      shipping_country
+      billing_email
+      billing_primary_phone
+      billing_secondary_phone
+      billing_address_line_1
+      billing_address_line_2
+      billing_city
+      billing_postcode
+      billing_state
+      billing_country
+    }
+  }
+
+  mutation MakeDefaultAddress($input: makeDefaultAddressInput!) {
+    makeDefaultAddress(input: $input) {
+      user_id
+      address_id
+      message
+      status_code
+      status
+    }
+  }
+
+  mutation AddBillingAddress($input: addBillingAddressInput!) {
+    addBillingAddress(input: $input) {
+      billing_primary_phone
+      billing_address_id
+      billing_city
+      billing_address_line_1
+      billing_address_line_2
+      billing_secondary_phone
+      billing_state
+      billing_email
+      billing_postcode
+      billing_name
+      billing_country
+    }
+  }
+
+  mutation AddLastCheckAvailabilityAddress(
+    $input: addLastCheckAvailabilityAddressInput!
+  ) {
+    addLastCheckAvailabilityAddress(input: $input) {
+      cluster_id
+      shipping_name
+      lat
+      lng
+      shipping_email
+      shipping_primary_phone
+      shipping_secondary_phone
+      shipping_address_line_1
+      shipping_city
+      shipping_postcode
+      shipping_state
+      shipping_country
+      message
+      status
+      status_code
+    }
+  }
+
+  mutation UpdateAddress($input: addAndUpdateUserProfileAddressInput!) {
+    updateAddress(input: $input) {
+      address_id
+      cluster_id
+      type
+      billing_name
+      shipping_name
+      address_hash
+      lat
+      lng
+      default_flag
+      billing_same_as_shipping_flag
+      delivery_instructions
+      shipping_email
+      shipping_primary_phone
+      shipping_secondary_phone
+      shipping_address_line_1
+      shipping_city
+      shipping_postcode
+      shipping_state
+      shipping_country
+      billing_email
+      billing_primary_phone
+      billing_secondary_phone
+      billing_address_line_1
+      billing_address_line_2
+      billing_city
+      billing_postcode
+      billing_state
+      billing_country
+    }
+  }
+
+  mutation DeleteAddress($input: getAndDeleteUserAddressInput!) {
+    deleteAddress(input: $input) {
+      address_id
+      cluster_id
+      type
+      billing_name
+      shipping_name
+      address_hash
+      lat
+      lng
+      default_flag
+      billing_same_as_shipping_flag
+      delivery_instructions
+      shipping_email
+      shipping_primary_phone
+      shipping_secondary_phone
+      shipping_address_line_1
+      shipping_city
+      shipping_postcode
+      shipping_state
+      shipping_country
+      billing_email
+      billing_primary_phone
+      billing_secondary_phone
+      billing_address_line_1
+      billing_address_line_2
+      billing_city
+      billing_postcode
+      billing_state
+      billing_country
+    }
+  }
+
+  mutation AddCard($input: addCardInput!) {
+    addCard(input: $input) {
+      user_id
+      email
+      phone_number
+      source_id
+      cardholder_name
+      backup_flag
+      default_flag
+      billing_address_line_1
+      billing_city
+      billing_country
+      billing_postcode
+      billing_state
+      billing_email
+      billing_primary_phone
+      message
+      status
+      status_code
+    }
+  }
+
+  mutation MakeDefaultCard($input: makeDefaultCardInput!) {
+    makeDefaultCard(input: $input) {
+      user_id
+      payment_method_id
+      message
+      status_code
+      status
+    }
+  }
+
+  mutation DeleteCard($input: deleteCardInput!) {
+    deleteCard(input: $input) {
+      user_id
+      cardholder_name
+      backup_flag
+      default_flag
+      billing_address_line_1
+      billing_city
+      billing_country
+      billing_postcode
+      billing_state
+      billing_email
+      billing_primary_phone
+    }
+  }
+
+  mutation UpdateCard($input: updateCardInput!) {
+    updateCard(input: $input) {
+      user_id
+      cardholder_name
+      backup_flag
+      default_flag
+      billing_address_line_1
+      billing_city
+      billing_country
+      billing_postcode
+      billing_state
+      billing_email
+      billing_primary_phone
+    }
+  }
+
+  mutation UpdateSubscriptionBillingAddress(
+    $input: updateSubscriptionBillingAddressInput!
+  ) {
+    updateSubscriptionBillingAddress(input: $input) {
+      user_id
+      subscription_id
+      billing_address_line_1
+      billing_address_line_2
+      billing_city
+      billing_country
+      billing_postcode
+      billing_state
+      billing_email
+      billing_primary_phone
+      billing_secondary_phone
+      cardholder_name
+    }
+  }
+
+  mutation UpdatePaymentLogoUrls($input: paymentLogoUrlInput) {
+    updatePaymentLogoUrls(input: $input) {
+      PK
+      SK
+      visa
+      mastercard
+      american_express
+      paypal
+    }
+  }
+
+  mutation UpdateItemCountInCart($input: updateItemCountInCartInput!) {
+    updateItemCountInCart(input: $input) {
+      status
+      status_code
+      subscription_frequency_list
+      contain_subscription_flag
+      contain_out_of_stock_product
+      product_count
+      cart_items {
+        product_id
+        subscription_flag
+        item_count
+        subscription_frequency
+        subscription_frequency_title
+        product_name
+        product_title
+        inventory_policy
+        availability_range
+        available_on_subscription_flag
+        subscription_frequency_details {
+          position
+          frequency_title
+          frequency_name
+        }
+        stock_flag
+        weight
+        homepage_media {
+          media_type
+          media_url
+          media_width
+          media_height
+        }
+        on_sale_flag
+        on_sale_to
+        on_sale_from
+        on_sale_maximum_quantity
+        amount_saved
+        percentage_off
+        sale_price
+        base_price
+        price_unit
+        price_per_unit
+      }
+      pricing_details {
+        onetime_amount
+        total_amount
+        discount
+        payable_amount
+        onetime_delivery_charge
+        recurring_delivery_charges {
+          subscription_frequency
+          recurring_amount
+          delivery_charge
+          recurring_total_amount
+        }
+      }
+    }
+  }
+
+  mutation AddToCart($input: addToCartInput!) {
+    addToCart(input: $input) {
+      user_id
+      unauth_id
+      cart_id
+      subscription_flag
+      subscription_frequency
+      item_count
+      product_id
+      status_code
+      status
+      message
+      buynow_flag
+    }
+  }
+
+  mutation MigrateCart($input: migrateCartInput!) {
+    migrateCart(input: $input) {
+      status
+      status_code
+      subscription_frequency_list
+      contain_subscription_flag
+      contain_out_of_stock_product
+      product_count
+      cart_items {
+        product_id
+        subscription_flag
+        item_count
+        subscription_frequency
+        subscription_frequency_title
+        product_name
+        product_title
+        inventory_policy
+        availability_range
+        available_on_subscription_flag
+        subscription_frequency_details {
+          position
+          frequency_title
+          frequency_name
+        }
+        stock_flag
+        weight
+        homepage_media {
+          media_type
+          media_url
+          media_width
+          media_height
+        }
+        on_sale_flag
+        on_sale_to
+        on_sale_from
+        on_sale_maximum_quantity
+        amount_saved
+        percentage_off
+        sale_price
+        base_price
+        price_unit
+        price_per_unit
+      }
+      pricing_details {
+        onetime_amount
+        total_amount
+        discount
+        payable_amount
+        onetime_delivery_charge
+        recurring_delivery_charges {
+          subscription_frequency
+          recurring_amount
+          delivery_charge
+          recurring_total_amount
+        }
+      }
+    }
+  }
+
+  mutation DeleteProductFromCart($input: deleteProductFromCartInput!) {
+    deleteProductFromCart(input: $input) {
+      status
+      status_code
+      subscription_frequency_list
+      contain_subscription_flag
+      contain_out_of_stock_product
+      product_count
+      cart_items {
+        product_id
+        subscription_flag
+        item_count
+        subscription_frequency
+        subscription_frequency_title
+        product_name
+        product_title
+        inventory_policy
+        availability_range
+        available_on_subscription_flag
+        subscription_frequency_details {
+          position
+          frequency_title
+          frequency_name
+        }
+        stock_flag
+        weight
+        homepage_media {
+          media_type
+          media_url
+          media_width
+          media_height
+        }
+        on_sale_flag
+        on_sale_to
+        on_sale_from
+        on_sale_maximum_quantity
+        amount_saved
+        percentage_off
+        sale_price
+        base_price
+        price_unit
+        price_per_unit
+      }
+      pricing_details {
+        onetime_amount
+        total_amount
+        discount
+        payable_amount
+        onetime_delivery_charge
+        recurring_delivery_charges {
+          subscription_frequency
+          recurring_amount
+          delivery_charge
+          recurring_total_amount
+        }
+      }
+    }
+  }
+
+  mutation UpdateOrderAddress($input: updateOrderAddressInput!) {
+    updateOrderAddress(input: $input) {
+      user_id
+      order_id
+      address_id
+      default_flag
+      message
+      status_code
+      status
+    }
+  }
+
+  mutation UpdateOrderPaymentMethod($input: updateOrderPaymentMethodInput!) {
+    updateOrderPaymentMethod(input: $input) {
+      user_id
+      order_id
+      payment_method_id
+      default_flag
+      message
+      status_code
+      status
+    }
+  }
+
+  mutation GenerateInvoiceUrl($input: generateInvoiceUrlInput!) {
+    generateInvoiceUrl(input: $input) {
+      user_id
+      order_id
+      invoice_url
+      message
+      status_code
+      status
+    }
+  }
+
+  mutation CheckOutCart($input: checkOutCartInput!) {
+    checkOutCart(input: $input) {
+      user_id
+      cart_id
+      delivery_date
+      cluster_id
+      order_id
+      pricing_details {
+        onetime_amount
+        total_amount
+        discount
+        payable_amount
+        onetime_delivery_charge
+        recurring_delivery_charges {
+          subscription_frequency
+          recurring_amount
+          delivery_charge
+          recurring_total_amount
+        }
+      }
+      status_code
+      status
+    }
+  }
+
+  mutation CancelOrder($input: cancelOrderInput!) {
+    cancelOrder(input: $input) {
+      user_id
+      order_id
+      cancelled_reason
+      status_code
+      status
+      message
+    }
+  }
+
+  mutation UpdateOrderBillingAddress($input: updateOrderBillingAddressInput!) {
+    updateOrderBillingAddress(input: $input) {
+      user_id
+      subscription_id
+      billing_address_line_1
+      billing_address_line_2
+      billing_city
+      billing_country
+      billing_postcode
+      billing_state
+      billing_email
+      billing_primary_phone
+      billing_secondary_phone
+      cardholder_name
+    }
+  }
+
+  mutation UpdateOrderDeliveryDate($input: updateOrderDeliveryDateInput!) {
+    updateOrderDeliveryDate(input: $input) {
+      user_id
+      order_id
+      delivery_date
+      message
+      status
+      status_code
+    }
+  }
+
+  mutation UpdateOrderDeliveryInstructions(
+    $input: updateOrderDeliveryInstructionsInput!
+  ) {
+    updateOrderDeliveryInstructions(input: $input) {
+      user_id
+      order_id
+      delivery_instructions
+      status_code
+      status
+      message
+    }
+  }
+
+  mutation UpdateSubscriptionPaymentMethod(
+    $input: updateSubscriptionPaymentMethodInput!
+  ) {
+    updateSubscriptionPaymentMethod(input: $input) {
+      user_id
+      subscription_id
+      payment_method_id
+      default_flag
+      status
+      status_code
+      message
+    }
+  }
+
+  mutation UpdateSubscriptionDeliveryInstructions(
+    $input: updateSubscriptionDeliveryInstructionsInput!
+  ) {
+    updateSubscriptionDeliveryInstructions(input: $input) {
+      user_id
+      subscription_id
+      delivery_instructions
+      status
+      status_code
+      message
+    }
+  }
+
+  mutation UpdateSubscriptionAddress($input: updateSubscriptionAddressInput!) {
+    updateSubscriptionAddress(input: $input) {
+      user_id
+      subscription_id
+      address_id
+      default_flag
+      status
+      status_code
+      message
+    }
+  }
+
+  mutation HoldOrCancelUserSubscription(
+    $input: holdOrCancelUserSubscriptionInput!
+  ) {
+    holdOrCancelUserSubscription(input: $input) {
+      user_id
+      subscription_id
+      cancelled_reason
+    }
+  }
+
+  mutation AddProductInSubscription($input: addProductInSubscriptionInput!) {
+    addProductInSubscription(input: $input) {
+      user_id
+      subscription_id
+      product_id
+      item_count
+      cluster_id
+      shipping_postcode
+      message
+      status_code
+      status
+    }
+  }
+
+  mutation UpdateItemCountInSubscription(
+    $input: updateItemCountInSubscriptionInput!
+  ) {
+    updateItemCountInSubscription(input: $input) {
+      user_id
+      subscription_id
+      product_id
+      item_count
+      cluster_id
+      shipping_postcode
+      message
+      status_code
+      status
+    }
+  }
+
+  mutation DeleteProductFromSubscription(
+    $input: deleteProductFromSubscriptionInput!
+  ) {
+    deleteProductFromSubscription(input: $input) {
+      user_id
+      subscription_id
+      product_id
+      shipping_postcode
+      cluster_id
+      message
+      status_code
+      status
+    }
+  }
+
+  mutation ActiveUserSubscription($input: activeUserSubscriptionInput!) {
+    activeUserSubscription(input: $input) {
+      user_id
+      subscription_id
+      delivery_date
+      shipping_postcode
+      cluster_id
+      message
+      status
+      status_code
+    }
+  }
+
+  mutation UpdateSubscriptionDeliveryDate(
+    $input: updateSubscriptionDeliveryDateInput!
+  ) {
+    updateSubscriptionDeliveryDate(input: $input) {
+      user_id
+      subscription_id
+      delivery_date
+      message
+      status
+      status_code
+    }
+  }
+
+  mutation UpdateSubscriptionFrequency(
+    $input: updateSubscriptionFrequencyInput!
+  ) {
+    updateSubscriptionFrequency(input: $input) {
+      user_id
+      subscription_id
+      delivery_date
+      message
+      status
+      status_code
+      subscription_frequency
+    }
+  }
+
+  mutation DeleteUserTransaction($input: getAndDeleteTransactionInput!) {
+    deleteUserTransaction(input: $input) {
+      transaction_id
+      transaction_status
+      payment_amount
+      failed_reason
+      order_id
+      payment_id
+      created_at
+      payment_method_details {
+        payment_method_type
+        exp_month
+        exp_year
+        last_4
+        billing_state
+        billing_email
+        card_brand
+        billing_address_line_1
+        default_flag
+        billing_primary_phone
+        billing_country
+        cardholder_name
+        billing_city
+        payment_method_id
+        billing_postcode
+        backup_flag
+        status
+      }
+    }
+  }
+
+  mutation CreateProduct($input: createAndUpdateProductInput!) {
+    createProduct(input: $input) {
+      main_product_flag
+      product_id
+      product_type
+      categories
+      sub_categories
+      variations
+      best_selling_flag
+      featured_flag
+      product_name
+      published_scope
+      average_rating_stars
+      product_title
+      short_description
+      long_description
+      vendor
+      ship_from
+      available_on_subscription_flag
+      subscription_frequency_details {
+        position
+        frequency_title
+        frequency_name
+      }
+      rating_details {
+        total_rating_count
+        five_start_rating_count
+        three_star_rating_count
+        one_star_rating_count
+        two_star_rating_count
+        four_start_rating_count
+      }
+      media_details {
+        position
+        media_type
+        media_url
+        media_height
+        media_width
+      }
+      stock_flag
+      weight
+      homepage_media {
+        media_type
+        media_url
+        media_width
+        media_height
+      }
+      on_sale_flag
+      on_sale_to
+      on_sale_from
+      on_sale_maximum_quantity
+      amount_saved
+      percentage_off
+      sale_price
+      base_price
+      price_unit
+      price_per_unit
+      origin_country
+      corner_image_url
+      status
+    }
+  }
+
+  mutation UpdateProduct($input: createAndUpdateProductInput!) {
+    updateProduct(input: $input) {
+      main_product_flag
+      product_id
+      product_type
+      categories
+      sub_categories
+      variations
+      best_selling_flag
+      featured_flag
+      product_name
+      published_scope
+      average_rating_stars
+      product_title
+      short_description
+      long_description
+      vendor
+      ship_from
+      available_on_subscription_flag
+      subscription_frequency_details {
+        position
+        frequency_title
+        frequency_name
+      }
+      rating_details {
+        total_rating_count
+        five_start_rating_count
+        three_star_rating_count
+        one_star_rating_count
+        two_star_rating_count
+        four_start_rating_count
+      }
+      media_details {
+        position
+        media_type
+        media_url
+        media_height
+        media_width
+      }
+      stock_flag
+      weight
+      homepage_media {
+        media_type
+        media_url
+        media_width
+        media_height
+      }
+      on_sale_flag
+      on_sale_to
+      on_sale_from
+      on_sale_maximum_quantity
+      amount_saved
+      percentage_off
+      sale_price
+      base_price
+      price_unit
+      price_per_unit
+      origin_country
+      corner_image_url
+      status
+    }
+  }
+
+  mutation CreateCategory($input: createAndUpdateCategoryInput!) {
+    createCategory(input: $input) {
+      priority
+      category_id
+      category_name
+      category_title
+      description
+      media_url
+      media_type
+      media_height
+      media_width
+      shop_media {
+        media_height
+        text_color
+        background_color
+        media_width
+        media_url
+        media_type
+      }
+      status
+    }
+  }
+
+  mutation UpdateCategory($input: createAndUpdateCategoryInput!) {
+    updateCategory(input: $input) {
+      priority
+      category_id
+      category_name
+      category_title
+      description
+      media_url
+      media_type
+      media_height
+      media_width
+      shop_media {
+        media_height
+        text_color
+        background_color
+        media_width
+        media_url
+        media_type
+      }
+      status
+    }
+  }
+
+  mutation DeleteCategory($input: getAndDeleteCategoryInput!) {
+    deleteCategory(input: $input) {
+      priority
+      category_id
+      category_name
+      category_title
+      description
+      media_url
+      media_type
+      media_height
+      media_width
+      shop_media {
+        media_height
+        text_color
+        background_color
+        media_width
+        media_url
+        media_type
+      }
+      status
+    }
+  }
+
+  mutation CreateReview($input: createAndUpdateReviewInput!) {
+    createReview(input: $input) {
+      review_id
+      product_name
+      rating_flag
+      rating_stars
+      review_flag
+      user_id
+      user_avtar_url
+      full_name
+      review_subject
+      helpful_flag
+      helpful_count
+      review_detail
+    }
+  }
+
+  mutation UpdateReview($input: createAndUpdateReviewInput!) {
+    updateReview(input: $input) {
+      review_id
+      product_name
+      rating_flag
+      rating_stars
+      review_flag
+      user_id
+      user_avtar_url
+      full_name
+      review_subject
+      helpful_flag
+      helpful_count
+      review_detail
+    }
+  }
+
+  mutation DeleteReview($input: getAndDeleteReviewInput!) {
+    deleteReview(input: $input) {
+      review_id
+      product_name
+      rating_flag
+      rating_stars
+      review_flag
+      user_id
+      user_avtar_url
+      full_name
+      review_subject
+      helpful_flag
+      helpful_count
+      review_detail
+    }
+  }
+
+  mutation CreateTestimonial($input: createAndUpdateTestimonialInput) {
+    createTestimonial(input: $input) {
+      rating_flag
+      rating_stars
+      testimonial_flag
+      user_avtar_url
+      position
+      full_name
+      testimonial_subject
+      testimonial_detail
+    }
+  }
+
+  mutation UpdateTestimonial($input: createAndUpdateTestimonialInput) {
+    updateTestimonial(input: $input) {
+      rating_flag
+      rating_stars
+      testimonial_flag
+      user_avtar_url
+      position
+      full_name
+      testimonial_subject
+      testimonial_detail
+    }
+  }
+
+  mutation DeleteTestimonial($input: getAndDeleteTestimonialInput) {
+    deleteTestimonial(input: $input) {
+      rating_flag
+      rating_stars
+      testimonial_flag
+      user_avtar_url
+      position
+      full_name
+      testimonial_subject
+      testimonial_detail
+    }
+  }
+
+  mutation SubscribeNewsLetter($input: subscribeNewsLetterInput!) {
+    subscribeNewsLetter(input: $input) {
+      news_letter_id
+      email
+      platform
+    }
+  }
+
+  mutation UpdateNewsLetterSubscription($input: subscribeNewsLetterInput!) {
+    updateNewsLetterSubscription(input: $input) {
+      news_letter_id
+      email
+      platform
+    }
+  }
+
+  mutation DeleteNewsLetterSubscription($input: getAndDeleteNewsLetterInput!) {
+    deleteNewsLetterSubscription(input: $input) {
+      news_letter_id
+      email
+      platform
+    }
+  }
+
+  mutation CreateQna($input: createAndUpdateQnaInput!) {
+    createQna(input: $input) {
+      qna_id
+      product_id
+      question
+      answer
+      position
+      answer_by
+    }
+  }
+
+  mutation UpdateQna($input: createAndUpdateQnaInput!) {
+    updateQna(input: $input) {
+      qna_id
+      product_id
+      question
+      answer
+      position
+      answer_by
+    }
+  }
+
+  mutation DeleteQna($input: getAndDeleteQnaInput!) {
+    deleteQna(input: $input) {
+      qna_id
+      product_id
+      question
+      answer
+      position
+      answer_by
+    }
+  }
+
+  mutation CreateComment($input: createAndUpdateCommentInput!) {
+    createComment(input: $input) {
+      PK
+      SK
+      comment_id
+      email
+      qna_id
+      user_id
+      uuid
+      user_avtar_url
+      comment
+      commented_by
+      commented_at
+      status
+      position
+      modified_by
+      modified_at
+    }
+  }
+
+  mutation UpdateComment($input: createAndUpdateCommentInput!) {
+    updateComment(input: $input) {
+      PK
+      SK
+      comment_id
+      email
+      qna_id
+      user_id
+      uuid
+      user_avtar_url
+      comment
+      commented_by
+      commented_at
+      status
+      position
+      modified_by
+      modified_at
+    }
+  }
+
+  mutation DeleteComment($input: getAndDeleteCommentInput!) {
+    deleteComment(input: $input) {
+      PK
+      SK
+      comment_id
+      email
+      qna_id
+      user_id
+      uuid
+      user_avtar_url
+      comment
+      commented_by
+      commented_at
+      status
+      position
+      modified_by
+      modified_at
+    }
+  }
+
+  mutation CreateCluster($input: createAndUpdateClusterInput!) {
+    createCluster(input: $input) {
+      PK
+      SK
+      cluster_id
+      cluster_name
+      postcode
+      description
+      cities
+      coordinates_format_1
+      coordinates_format_2
+      delivery_charges
+      delivery_days
+      created_by
+      created_at
+      modified_by
+      modified_at
+      available_frequency
+    }
+  }
+
+  mutation UpdateCluster($input: createAndUpdateClusterInput!) {
+    updateCluster(input: $input) {
+      PK
+      SK
+      cluster_id
+      cluster_name
+      postcode
+      description
+      cities
+      coordinates_format_1
+      coordinates_format_2
+      delivery_charges
+      delivery_days
+      created_by
+      created_at
+      modified_by
+      modified_at
+      available_frequency
+    }
+  }
+
+  mutation DeleteCluster($input: getAndDeleteClusterInput!) {
+    deleteCluster(input: $input) {
+      PK
+      SK
+      cluster_id
+      cluster_name
+      postcode
+      description
+      cities
+      coordinates_format_1
+      coordinates_format_2
+      delivery_charges
+      delivery_days
+      created_by
+      created_at
+      modified_by
+      modified_at
+      available_frequency
+    }
+  }
+
+  mutation CreateInventory($input: createAndUpdateInventoryInput!) {
+    createInventory(input: $input) {
+      PK
+      SK
+      product_type
+      inventory_id
+      product_id
+      variation_id
+      product_name
+      variation_name
+      variation_description
+      inventory_description
+      date
+      day
+      sku
+      total_stock
+      current_stock
+      purchased_stock
+      stock_unit
+      created_by
+      created_at
+      modified_by
+      modified_at
+    }
+  }
+
+  mutation UpdateInventory($input: createAndUpdateInventoryInput!) {
+    updateInventory(input: $input) {
+      PK
+      SK
+      product_type
+      inventory_id
+      product_id
+      variation_id
+      product_name
+      variation_name
+      variation_description
+      inventory_description
+      date
+      day
+      sku
+      total_stock
+      current_stock
+      purchased_stock
+      stock_unit
+      created_by
+      created_at
+      modified_by
+      modified_at
+    }
+  }
+
+  mutation DeleteInventory($input: getAndDeleteInventoryInput!) {
+    deleteInventory(input: $input) {
+      PK
+      SK
+      product_type
+      inventory_id
+      product_id
+      variation_id
+      product_name
+      variation_name
+      variation_description
+      inventory_description
+      date
+      day
+      sku
+      total_stock
+      current_stock
+      purchased_stock
+      stock_unit
+      created_by
+      created_at
+      modified_by
+      modified_at
+    }
+  }

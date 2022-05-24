@@ -1,0 +1,110 @@
+.container {
+  border-radius: 20px;
+  width: 30.4rem;
+}
+.header {
+  border-radius: 10px 10px 0 0;
+  background: #70a42f;
+  padding: 5px 10px 5px 21px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header p {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+  /* identical to box height */
+
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.02em;
+
+  color: #ffffff;
+}
+
+.contentContainer {
+  border-radius: 0 0 10px 10px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 20px;
+  gap: 2rem;
+}
+
+.datesContainer {
+  display: flex;
+  overflow-x: scroll;
+  gap: 8px;
+  /* margin: 0 4rem; */
+  width: 22rem;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.datesContainer::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.datesContainer {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.doneBtn {
+  width: 8rem;
+  background: #70a42f;
+  border-radius: 8px;
+  padding: 9px 23px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  /* identical to box height */
+
+  text-align: center;
+  letter-spacing: -0.015em;
+
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.doneBtn:active {
+  background: rgb(112, 164, 47, 0.8);
+}
+
+.btnContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media screen and (max-device-width: 640px) {
+  .container {
+    width: 19rem;
+  }
+  .datesContainer {
+    margin: 0;
+  }
+}
+
+.carousalContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 3rem;
+  justify-content: center;
+}
+
+.contentContainer {
+  border-radius: 0 0 10px 10px;
+  padding: 0 0;
+}
+
+.btnContainer {
+  padding-bottom: 1rem;
+  padding-right: 2rem;
+}
